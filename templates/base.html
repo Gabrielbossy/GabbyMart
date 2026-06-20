@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+body{
+    font-family: Arial;
+    margin:20px;
+}
+
+img{
+    max-width:100%;
+}
+
+nav a{
+    display:inline-block;
+    margin:5px;
+}
+
+@media(max-width:768px){
+
+    nav a{
+        display:block;
+        margin:10px 0;
+    }
+
+}
+
+</style>
+
+    <title>GabbyMart</title>
+</head>
+<body>
+
+{% if messages %}
+    {% for message in messages %}
+        <div style="
+            background-color: lightgreen;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        ">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}    
+
+    <h1>GabbyMart</h1>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/profile/">My Profile</a>
+        <a href="/orders/my-orders/">My Orders</a>
+        <a href="/support/">Support</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/notifications/">Notifications</a>
+        <form action="/search/" method="GET">
+    <input type="text" name="q" placeholder="Search products">
+    <button type="submit">Search</button>
+</form>
+    </nav>
+
+    <hr>
+
+<h3>Subscribe to Newsletter</h3>
+
+<form method="POST" action="/subscribe/">
+
+    {% csrf_token %}
+
+    <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required>
+
+    <button type="submit">
+        Subscribe
+    </button>
+
+</form>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

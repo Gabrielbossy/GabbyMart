@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Checkout</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <p>
+        Full Name:
+        <input type="text" name="full_name" required>
+    </p>
+
+    <p>
+        Phone Number:
+        <input type="text" name="phone" required>
+    </p>
+
+    <p>
+        Delivery Address:
+        <textarea name="address" required></textarea>
+    </p>
+
+    <button type="submit">
+        Place Order
+    </button>
+
+</form>
+
+{% endblock %}

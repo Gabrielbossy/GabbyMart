@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Wishlist</h2>
+
+{% for item in items %}
+<p>{{ item.product.name }}</p>
+{% empty %}
+<p>No products in wishlist.</p>
+{% endfor %}
+
+{% endblock %}

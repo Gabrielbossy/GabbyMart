@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Notifications</h2>
+
+{% for notification in notifications %}
+
+<div style="
+    border:1px solid #ddd;
+    padding:10px;
+    margin:10px;
+">
+    {{ notification.message }}
+</div>
+
+{% empty %}
+
+<p>No notifications yet.</p>
+
+{% endfor %}
+
+{% endblock %}

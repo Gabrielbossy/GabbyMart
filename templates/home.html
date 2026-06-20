@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GabbyMart</title>
+
+    <style>
+
+@media (max-width: 768px) {
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav a {
+        margin: 8px 0;
+    }
+
+    .hero {
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+        }
+
+        header{
+            background:green;
+            color:white;
+            padding:20px;
+            text-align:center;
+        }
+
+        nav{
+            background:#222;
+            padding:15px;
+            text-align:center;
+        }
+
+        nav a{
+            color:white;
+            margin:15px;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .hero{
+            padding:60px;
+            text-align:center;
+            background:white;
+        }
+
+        .hero h1{
+            color:green;
+            font-size:45px;
+        }
+
+        .hero p{
+            font-size:20px;
+        }
+
+        .btn{
+    background:green;
+    color:white;
+    padding:15px 25px;
+    border-radius:5px;
+    text-decoration:none;
+    display:inline-block;
+    font-size:18px;
+}
+
+        .services{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+            padding:40px;
+        }
+
+        .products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:40px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+        .card{
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        footer{
+            background:#222;
+            color:white;
+            text-align:center;
+            padding:20px;
+            margin-top:30px;
+        }
+
+    </style>
+</head>
+
+<body> 
+
+{% if messages %}
+    {% for message in messages %}
+        <div style="
+            background-color: lightgreen;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        ">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+<img src="{% static 'images/logo.jpg' %}" width="200">    
+
+<header>
+    <h1>GabbyMart</h1>
+    <p>Your Trusted online Marketplace</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="/accounts/login/">Login</a>
+    <a href="/accounts/register/">Register</a>
+    <a href="/accounts/logout/">Logout</a>
+    <a href="/cart/">Cart</a>
+    <a href="/dashboard/">Dashboard</a>
+</nav>
+
+<section class="hero">
+    <h1>Welcome to GabbyMart</h1>
+
+    <p>
+        Your Trusted online Market Place
+    </p>
+
+    <a href="#products" class="btn">
+    Shop Now
+</a>
+</section>
+
+<section class="services">
+
+    <div class="card">
+        <h2>Electronics</h2>
+        <p>Laptops, phones, accessories and modern tech products.</p>
+    </div>
+
+    <div class="card">
+        <h2>Furniture</h2>
+        <p>Quality furniture and household products for every home.</p>
+    </div>
+
+    <div class="card">
+        <h2>Agro Products</h2>
+        <p>Tree seedlings, cereals and farming products.</p>
+    </div>
+
+    <div class="card">
+        <h2>Stationery</h2>
+        <p>Office essentials and school supplies.</p>
+    </div>
+
+</section>
+
+<h2 id="products" style="text-align:center;">Our Products</h2>
+
+<div class="products" id="products">
+    
+    {% for product in products %}
+
+    <div class="card">
+
+        <img src="{{ product.image.url }}" width="200">
+
+        <h3>
+    <a href="{% url 'product_detail' product.id %}">
+        {{ product.name }}
+    </a>
+</h3>
+
+        <p>KES {{ product.price }}</p>
+
+        <p>{{ product.description }}</p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<footer>
+    <p>© 2026 GabbyMart | Your Trusted online Marketplace</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Search Results</h2>
+
+{% if query %}
+    <p>Results for: "{{ query }}"</p>
+{% endif %}
+
+{% for product in products %}
+
+    <div>
+        <h3>{{ product.name }}</h3>
+        <p>KSh {{ product.price }}</p>
+
+        <a href="/product/{{ product.id }}/">
+            View Product
+        </a>
+    </div>
+
+{% empty %}
+
+    <p>No products found.</p>
+
+{% endfor %}
+
+{% endblock %}

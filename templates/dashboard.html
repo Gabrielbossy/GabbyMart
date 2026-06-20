@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Admin Dashboard</h1>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+
+    <div style="background:#d4edda;padding:20px;">
+        <h2>{{ total_products }}</h2>
+        <p>Total Products</p>
+    </div>
+
+    <div style="background:#cce5ff;padding:20px;">
+        <h2>{{ total_users }}</h2>
+        <p>Total Users</p>
+    </div>
+
+    <div style="background:#fff3cd;padding:20px;">
+        <h2>{{ total_orders }}</h2>
+        <p>Total Orders</p>
+    </div>
+
+    <div style="background:#f8d7da;padding:20px;">
+        <h2>{{ total_reviews }}</h2>
+        <p>Total Reviews</p>
+    </div>
+
+</div>
+
+{% endblock %}
